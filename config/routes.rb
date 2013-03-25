@@ -1,6 +1,6 @@
 AdminCrud::Application.routes.draw do
 
-  get "comments/create"
+  #get "comments/create"
 
   get "home/index"
 
@@ -56,7 +56,7 @@ AdminCrud::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-  resources :posts do
+  resources :posts, :only => [:index, :show] do
     resources :comments, :only => [:create, :destroy]
   end
 

@@ -1,2 +1,16 @@
-<h1>Hello, Rails!</h1>
-<%= link_to "My Blog", posts_path %>
+<h1>Hello, I'm a simple blog with a RESTful admin section</h1>
+<%= link_to "Admin", admin_posts_path %>
+<% @posts.each do |post| %>
+<p>
+  <b><%= link_to post.title, post %></b>
+  <small>Posted by <%= post.name %></small>
+</p>
+
+<p>
+  <%= post.content %>
+</p>
+<p>
+	Comments: <%= post.comments.size %>
+</p>
+<hr />
+<% end %>

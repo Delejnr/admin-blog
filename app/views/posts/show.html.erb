@@ -1,25 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @post.name %>
-</p>
+<h2>
+  <b><%= @post.title %></b>
+</h2>
 
 <p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Content:</b>
   <%= @post.content %>
 </p>
 
-<h2>Comments</h2>
+<p>
+	<small>Posted by <%= @post.name %></small>
+</p>
+
+<h3>Comments</h3>
 <%= render @post.comments %>
 
-<h2>Add a comment:</h2>
+<h3>Add a comment:</h3>
 <%= render "comments/form" %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', root_path %>
