@@ -1,8 +1,6 @@
 AdminCrud::Application.routes.draw do
-  resources :posts do
-    resources :comments
-  end
 
+  get "comments/create"
 
   get "home/index"
 
@@ -32,12 +30,6 @@ AdminCrud::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
@@ -52,6 +44,21 @@ AdminCrud::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :admin do
+    root to: "admin#index"
+    resources :posts do
+      resources :comments, :only => [:create, :destroy]
+    end
+  end
+
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+  resources :posts do
+    resources :comments, :only => [:create, :destroy]
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
