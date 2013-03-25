@@ -1,5 +1,7 @@
 AdminCrud::Application.routes.draw do
 
+  get "errors/routing"
+
   #get "comments/create"
 
   get "home/index"
@@ -56,7 +58,7 @@ AdminCrud::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-  resources :posts, :only => [:index, :show] do
+  resources :posts, :only => :show do
     resources :comments, :only => [:create, :destroy]
   end
 
@@ -69,4 +71,5 @@ AdminCrud::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  match '*a', :to => 'errors#routing'
 end
